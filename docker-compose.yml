@@ -13,8 +13,33 @@ services:
       - api
     volumes:
       - ./website:/var/www/html
+  
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "root123"      # mot de passe super admin
+      MYSQL_USER: "zidane"                # utilisateur créé automatiquement
+      MYSQL_PASSWORD: "zidane123"         # mot de passe de cet utilisateur
+    ports:
+      - "3306:3306" 
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - student-list-networks
+  
+  
 
-
+  adminer:
+    container_name: adminer_tp
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - '8085:8080'
+    networks:
+      - student-list-networks
+  
   api:
     container_name: api
     image: api:v1.0
@@ -29,3 +54,5 @@ networks :
     student-list-networks :
       driver: bridge
       name: student-list-networks
+volumes:
+  mysql_data:
