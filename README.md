@@ -21,7 +21,10 @@ La page web consomme l’API Python pour afficher dynamiquement la liste des ét
 - **Apache (PHP)** pour le serveur web.  
 - **Python / Flask** pour le backend API.  
 - **Docker Registry** pour l’hébergement privé des images.
+- Une image Mysql est intégrée au projet juste pour teste
+- Une image Adminer est intégrée au projet juste pour teste
 
 ---
 
 ## 📁 Structure du projet
+
